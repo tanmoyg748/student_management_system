@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+
+    <h1>{{ title }}</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Name:</label>
+        <br>
+        <input
+            type="text"
+            name="name"
+            value="{{ student.name|default:'' }}"
+        >
+
+        {% if errors.name %}
+            <p style="color:red;">
+                {{ errors.name }}
+            </p>
+        {% endif %}
+
+        <br>
+
+
+        <label>Email:</label>
+        <br>
+        <input
+            type="text"
+            name="email"
+            value="{{ student.email|default:'' }}"
+        >
+
+        {% if errors.email %}
+            <p style="color:red;">
+                {{ errors.email }}
+            </p>
+        {% endif %}
+
+        <br>
+
+
+        <label>Phone:</label>
+        <br>
+        <input
+            type="text"
+            name="phone"
+            value="{{ student.phone|default:'' }}"
+        >
+
+        {% if errors.phone %}
+            <p style="color:red;">
+                {{ errors.phone }}
+            </p>
+        {% endif %}
+
+        <br>
+
+
+        <label>Course:</label>
+        <br>
+        <input
+            type="text"
+            name="course"
+            value="{{ student.course|default:'' }}"
+        >
+
+        {% if errors.course %}
+            <p style="color:red;">
+                {{ errors.course }}
+            </p>
+        {% endif %}
+
+        <br><br>
+
+        <button type="submit">
+            Save Student
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="{% url 'student_list' %}">
+        Back to Student List
+    </a>
+
+</body>
+</html>
